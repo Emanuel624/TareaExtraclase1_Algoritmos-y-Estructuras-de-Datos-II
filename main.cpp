@@ -1,25 +1,56 @@
 #include <iostream>
 #include <fstream>
-using namespace  std; //Sirve para no tener que poner std::
+#include <cstdlib> // Para usar la función rand()
+#include <ctime> // Para usar la función time()
+using namespace std;
 
 int main()
 {
+    // Inicializar la semilla del generador de números aleatorios
+    srand(time(0));
 
     fstream fout;
-
-    unsigned short x =  8675;
-
-    fout.open("BinaryFile.dat", ios::out | ios::binary); //Se genera el archivo binario como tal
+    fout.open("BinaryFile.dat", ios::out | ios::binary);
 
     if (fout)
     {
-        fout.write(reinterpret_cast<char*>(&x),sizeof(unsigned short));
+        string input;
+        cout << "Escribe 'SMALL' para generar un archivo binario de 512MB: ";
+        cin >> input;
+
+        if (input == "SMALL")
+        {
+            // 512MB es aproximadamente 512000000 bytes
+            // Un int tiene 4 bytes, por lo que necesitamos generar aproximadamente 128000000 números
+            for(int i = 0; i < 128000000; i++)
+            {
+                int x = rand(); // Generar un número aleatorio
+                //cout << x << endl; //imprimir numeros
+
+                fout.write(reinterpret_cast<char*>(&x), sizeof(int));
+            }
+        }
+
+        if (input == "MEDIUM")
+        {
+            // 1GB es aproximadamente 1000000000 bytes
+            // Un int tiene 4 bytes, por lo que necesitamos generar aproximadamente 128000000 números
+            for(int i = 0; i < 250000000; i++)
+            {
+                int x = rand(); // Generar un número aleatorio
+                //cout << x << endl; //imprimir numeros
+
+                fout.write(reinterpret_cast<char*>(&x), sizeof(int));
+            }
+        }
+
         fout.close();
     }
     else
+    {
         cout << "Error opening file!\n";
+    }
 
-    //Pausar el programa hasta que se presione "Enter"
     cin.ignore();
     cin.get();
 
