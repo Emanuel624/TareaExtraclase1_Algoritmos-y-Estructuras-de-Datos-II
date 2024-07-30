@@ -49,12 +49,6 @@ cmake_ninja_workdir = /home/emanuel/CLionProjects/TareaExtraclase1-AlgoritmosyEs
 
 build cmake_object_order_depends_target_TareaExtraclase1_AlgoritmosyEstructurasDeDatosII: phony || CMakeFiles/TareaExtraclase1_AlgoritmosyEstructurasDeDatosII.dir
 
-build CMakeFiles/TareaExtraclase1_AlgoritmosyEstructurasDeDatosII.dir/main.cpp.o: CXX_COMPILER__TareaExtraclase1_AlgoritmosyEstructurasDeDatosII_unscanned_Debug /home/emanuel/CLionProjects/TareaExtraclase1-AlgoritmosyEstructurasDeDatosII/main.cpp || cmake_object_order_depends_target_TareaExtraclase1_AlgoritmosyEstructurasDeDatosII
-  DEP_FILE = CMakeFiles/TareaExtraclase1_AlgoritmosyEstructurasDeDatosII.dir/main.cpp.o.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/TareaExtraclase1_AlgoritmosyEstructurasDeDatosII.dir
-  OBJECT_FILE_DIR = CMakeFiles/TareaExtraclase1_AlgoritmosyEstructurasDeDatosII.dir
-
 build CMakeFiles/TareaExtraclase1_AlgoritmosyEstructurasDeDatosII.dir/generator.cpp.o: CXX_COMPILER__TareaExtraclase1_AlgoritmosyEstructurasDeDatosII_unscanned_Debug /home/emanuel/CLionProjects/TareaExtraclase1-AlgoritmosyEstructurasDeDatosII/generator.cpp || cmake_object_order_depends_target_TareaExtraclase1_AlgoritmosyEstructurasDeDatosII
   DEP_FILE = CMakeFiles/TareaExtraclase1_AlgoritmosyEstructurasDeDatosII.dir/generator.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
@@ -69,7 +63,7 @@ build CMakeFiles/TareaExtraclase1_AlgoritmosyEstructurasDeDatosII.dir/generator.
 #############################################
 # Link the executable TareaExtraclase1_AlgoritmosyEstructurasDeDatosII
 
-build TareaExtraclase1_AlgoritmosyEstructurasDeDatosII: CXX_EXECUTABLE_LINKER__TareaExtraclase1_AlgoritmosyEstructurasDeDatosII_Debug CMakeFiles/TareaExtraclase1_AlgoritmosyEstructurasDeDatosII.dir/main.cpp.o CMakeFiles/TareaExtraclase1_AlgoritmosyEstructurasDeDatosII.dir/generator.cpp.o
+build TareaExtraclase1_AlgoritmosyEstructurasDeDatosII: CXX_EXECUTABLE_LINKER__TareaExtraclase1_AlgoritmosyEstructurasDeDatosII_Debug CMakeFiles/TareaExtraclase1_AlgoritmosyEstructurasDeDatosII.dir/generator.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/TareaExtraclase1_AlgoritmosyEstructurasDeDatosII.dir
   POST_BUILD = :
