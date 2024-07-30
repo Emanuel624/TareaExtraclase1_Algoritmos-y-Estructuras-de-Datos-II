@@ -4,7 +4,7 @@
 #include <ctime> // Para usar la función time()
 using namespace std;
 
-int main()
+int generator()
 {
     // Inicializar la semilla del generador de números aleatorios
     srand(time(0));
