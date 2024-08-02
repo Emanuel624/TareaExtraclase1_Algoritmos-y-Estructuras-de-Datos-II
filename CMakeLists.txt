@@ -4,4 +4,5 @@ project(TareaExtraclase1_AlgoritmosyEstructurasDeDatosII)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(TareaExtraclase1_AlgoritmosyEstructurasDeDatosII
-        generator.cpp)
+        generator.cpp
+        sorter.cpp)
