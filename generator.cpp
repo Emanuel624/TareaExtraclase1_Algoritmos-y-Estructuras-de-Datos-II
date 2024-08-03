@@ -61,6 +61,7 @@ int main(int argc, char* argv[])
         fout.close();
     }else{
         cout << "Error abriendo el archivo!\n";
+        return 1
     }
 
     return 0;

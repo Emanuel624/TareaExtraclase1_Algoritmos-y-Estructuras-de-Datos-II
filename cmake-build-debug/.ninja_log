@@ -1,5 +1,8 @@
 # ninja log v6
-0	19	1722572783196943632	build.ninja	25b28f28b541d5c7
+0	19	1722641862062511080	build.ninja	25b28f28b541d5c7
 1	354	1722310954188172001	CMakeFiles/TareaExtraclase1_AlgoritmosyEstructurasDeDatosII.dir/main.cpp.o	26b6455f3e3d8fce
 358	439	1722570596516593913	TareaExtraclase1_AlgoritmosyEstructurasDeDatosII	84cc2ab1908d325b
 1	358	1722570596159595311	CMakeFiles/TareaExtraclase1_AlgoritmosyEstructurasDeDatosII.dir/generator.cpp.o	d24fd59b5dbc3ae9
+6	107	1722645287008822299	CMakeFiles/TareaExtraclase1_AlgoritmosyEstructurasDeDatosII.dir/PagedArray.cpp.o	942fcbe1b4b4b358
+5	454	1722645287006822300	CMakeFiles/TareaExtraclase1_AlgoritmosyEstructurasDeDatosII.dir/generator.cpp.o	d24fd59b5dbc3ae9
+13	646	1722675156640966649	CMakeFiles/TareaExtraclase1_AlgoritmosyEstructurasDeDatosII.dir/PagedArray.cpp.o	942fcbe1b4b4b358
