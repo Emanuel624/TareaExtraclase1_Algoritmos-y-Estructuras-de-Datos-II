@@ -3,6 +3,7 @@
 #include <fstream>
 #include <string>
 #include <cstdlib>
+#include <ctime>
 using namespace std;
 
 
@@ -88,6 +89,18 @@ public:
         }
         return currentFrame[index % 1024];
     }
+
+    void writeBack() {
+        ofstream outputFile(outputFilePath, ios::binary);
+
+        outputFile.write(reinterpret_cast<char*>(frame1), sizeof(frame1));
+        outputFile.write(reinterpret_cast<char*>(frame2), sizeof(frame2));
+        outputFile.write(reinterpret_cast<char*>(frame3), sizeof(frame3));
+        outputFile.write(reinterpret_cast<char*>(frame4), sizeof(frame4));
+
+        outputFile.close();
+        cout << "Se han escrito los datos ordenados en el archivo binario." << endl;
+    }
 };
 
 //QuickSort
@@ -145,6 +158,9 @@ void bubbleSort(PagedArray& arr, int n) {
 }
 
 int main(int argc, char* argv[]) {
+    clock_t start, end;
+    start = clock(); // Iniciar el reloj
+
     string inputFilePath;
     string outputFilePath;
     string algoritmo;
@@ -164,9 +180,9 @@ int main(int argc, char* argv[]) {
     PagedArray* pagedArray = new PagedArray(inputFilePath, outputFilePath);
 
     // Abrir el archivo de salida en modo binario
-    std::ifstream file(outputFilePath, std::ios::binary | std::ios::ate);
+    ifstream file(inputFilePath, ios::binary | ios::ate);
     // Obtener el tamaño del archivo
-    std::streamsize size = file.tellg();
+    streamsize size = file.tellg();
     // Cerrar el archivo
     file.close();
 
@@ -177,6 +193,7 @@ int main(int argc, char* argv[]) {
     if (algoritmo == "QS") {
         cout << "Algoritmo de ordenamiento: Quick Sort" << endl;
         quickSort(*pagedArray, 0, numIntegers - 1); // Asegúrate de que el rango sea correcto
+        cout << numIntegers<< endl;
     }else if(algoritmo == "IS"){
         cout << "Algoritmo de ordenamiento: Insertion Sort" << endl;
         insertionSort(*pagedArray, numIntegers); // Asegúrate de que el tamaño sea correcto
@@ -186,7 +203,29 @@ int main(int argc, char* argv[]) {
     }else{
         cout << "Error: Se debe escoger solamente QS (Quick Sort), IS (Insertion Sort) o BS (Bubble Sort) como algoritmos de ordenamiento" <<endl;
     }
-    cout << "Input File Path: " << inputFilePath << endl;
-    cout << "Output File Path: " << outputFilePath << endl;
-}
 
+    pagedArray->writeBack();
+
+    // Verificar los resultados y escribir en un archivo CSV
+    string csvFilePath = outputFilePath.substr(0, outputFilePath.find_last_of("\\/")) + "/sorted_numbers.csv";
+    ofstream csvFile(csvFilePath);
+    for (int i = 0; i < numIntegers - 1; i++) {
+        if ((*pagedArray)[i] > (*pagedArray)[i + 1]) {
+            cout << "Error: Los números no están ordenados correctamente." << endl;
+            return 1;
+        }
+        csvFile << (*pagedArray)[i];
+        if (i != numIntegers - 2) { // No agregar una coma después del último número
+            csvFile << ",";
+        }
+    }
+    csvFile.close();
+
+    cout << "Los números están ordenados correctamente y se han escrito en un archivo CSV." << endl;
+
+    end = clock(); // Detener el reloj
+    double time_taken = double(end - start) / double(CLOCKS_PER_SEC); // Calcular el tiempo transcurrido
+    cout << "El programa tardó " << time_taken << " segundos en ejecutarse." << endl;
+
+    return 0;
+}
