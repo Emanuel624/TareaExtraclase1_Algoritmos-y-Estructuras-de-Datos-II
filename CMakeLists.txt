@@ -6,4 +6,4 @@ set(CMAKE_CXX_STANDARD 17)
 add_executable(TareaExtraclase1_AlgoritmosyEstructurasDeDatosII
         generator.cpp
         sorter.cpp
-        PagedArray.cpp)
+)
