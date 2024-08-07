@@ -5,14 +5,14 @@
 2. Para evitar conflictos se recomienda compilar el codigo con el siguiente comando:
 
 
-              g++ generator.cpp -o generator
+         g++ generator.cpp -o generator
 
 3. Una vez compilado por seguridad, se puede ejecutar la aplicación con el siguiente comando:
    
-                ./generator –size <SIZE> -output <OUTPUT FILE PATH>
+         ./generator –size <SIZE> -output <OUTPUT FILE PATH>
    Donde;
          
-          <SIZE>  -> Puede tener los valores de SMALL(512MB), MEDIUM(1GB) O LARGE(2GB)
+         <SIZE>  -> Puede tener los valores de SMALL(512MB), MEDIUM(1GB) O LARGE(2GB)
 
          <OUTPUT FILE PATH>  -> Es la ruta donde se quiere generar el archivo, 
 por ejemplo:
@@ -32,7 +32,7 @@ por ejemplo:
 2. Para evitar conflictos se recomienda compilar el codigo con el siguiente comando:
 
           
-              g++ sorter.cpp -o sorter
+           g++ sorter.cpp -o sorter
 
 3. Una vez compilado por seguridad, se puede ejecutar la aplicación con el siguiente comando:
    
