@@ -83,6 +83,9 @@ public:
         }
         totalSize = inputFile.tellg() / sizeof(int); // Número total de enteros en el archivo
         inputFile.close();
+
+        // Inicializar la semilla para el generador de números aleatorios
+        srand(time(nullptr));
     }
 
     int& operator[](size_t index) {
@@ -101,9 +104,10 @@ public:
         // Si la página no está cargada, cargarla desde el archivo
         pageFaults++;
 
-        // Elegir un frame para reemplazar
-        auto frameToReplace = frames.back();
-        frames.pop_back();
+        // Elegir un frame para reemplazar al azar
+        int randomIndex = rand() % frames.size();
+        auto frameToReplace = frames[randomIndex];
+        frames.erase(frames.begin() + randomIndex);
 
         // Guardar la página actual en el disco si está mapeada
         for (auto& entry : pageTable) {
@@ -136,14 +140,13 @@ public:
     }
 
     int getPageHits() const {
-        return pageHits;
+        return -pageHits;
     }
 
     size_t size() const {
         return totalSize;
     }
 };
-
 // QuickSort
 void quickSort(PagedArray& arr, int start, int end) {
     if (start >= end)
@@ -233,13 +236,13 @@ int main(int argc, char* argv[]) {
 
     // Ordenar el PagedArray según el algoritmo especificado
     if (algoritmo == "QS") {
-        cout << "Usando QuickSort" << endl;
+        cout << "Usando QuickSort..." << endl;
         quickSort(pagedArray, 0, arraySize - 1);
     } else if (algoritmo == "IS") {
-        cout << "Usando InsertionSort" << endl;
+        cout << "Usando InsertionSort..." << endl;
         insertionSort(pagedArray, arraySize);
     } else if (algoritmo == "BS") {
-        cout << "Usando BubbleSort" << endl;
+        cout << "Usando BubbleSort..." << endl;
         bubbleSort(pagedArray, arraySize);
     } else {
         cerr << "Algoritmo no soportado. Use QS, IS, o BS." << endl;
